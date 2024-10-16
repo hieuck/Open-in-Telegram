@@ -1,0 +1,20 @@
+{
+    "manifest_version": 3,
+    "name": "Open in Telegram",
+    "version": "1.0",
+    "description": "Open Telegram Web links in the Telegram desktop app with context menu",
+    "permissions": [
+      "contextMenus",
+      "tabs"
+    ],
+    "background": {
+      "service_worker": "background.js"
+    },
+    "action": {
+      "default_popup": "popup.html"
+    },
+    "host_permissions": [
+      "https://web.telegram.org/*"
+    ]
+  }
+  

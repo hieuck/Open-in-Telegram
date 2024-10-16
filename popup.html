@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Open in Telegram</title>
+    <style>
+      body {
+        width: 200px;
+        font-family: Arial, sans-serif;
+      }
+      button {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Open in Telegram</h3>
+    <button id="open-telegram">Open Telegram App</button>
+
+    <script>
+      document.getElementById("open-telegram").addEventListener("click", () => {
+        chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+          const tab = tabs[0];
+          if (tab.url.includes("web.telegram.org/k/#")) {
+            const telegramUrl = tab.url.replace("https://web.telegram.org/k/#", "tg://resolve?domain=");
+            chrome.tabs.create({ url: telegramUrl });
+          } else {
+            alert("This is not a Telegram link.");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
